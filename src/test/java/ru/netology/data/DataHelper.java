@@ -14,6 +14,7 @@ public class DataHelper {
     }
 
     private static Faker faker = new Faker(new Locale("en"));
+    private static Faker faker2 = new Faker(new Locale("ru"));
 
     @Value
     public static class CardInfo{
@@ -56,12 +57,16 @@ public class DataHelper {
         return String.valueOf(faker.random().nextInt(11,21));
     }
 
+    private static String getInvalidYearInFuture(){
+        return String.valueOf(faker.random().nextInt(29,55));
+    }
+
     private static String getValidName(){
         return faker.name().name();
     }
 
     private static String getInvalidName(){
-        return faker.internet().password();
+        return faker2.name().name();
     }
 
     private static String getCVV(){
@@ -74,5 +79,24 @@ public class DataHelper {
 
     public static CardInfo getDeclinedUser(){
         return new CardInfo("5555 6666 7777 8888",getValidMonth(),getValidYear(),getValidName(),getCVV());
+    }
+
+    public static CardInfo getUserWithWrongCardNumber(){
+        return new CardInfo("1111 2222 3333 4445",getValidMonth(),getValidYear(),getValidName(),getCVV());
+    }
+
+    public static CardInfo getUserWithWrongMonth(){
+        return new CardInfo("1111 2222 3333 4444",getInvalidMonth(),getValidYear(),getValidName(),getCVV());
+    }
+
+    public static CardInfo getUserWithWrongYear(){
+        return new CardInfo("1111 2222 3333 4444",getValidMonth(),getInvalidYear(),getValidName(),getCVV());
+    }
+
+    public static CardInfo getUserWithWrongYearInFuture(){
+        return new CardInfo("1111 2222 3333 4444",getValidMonth(),getInvalidYearInFuture(),getValidName(),getCVV());
+    }
+    public static CardInfo getUserWithCyrillicName(){
+        return new CardInfo("1111 2222 3333 4444",getValidMonth(),getValidYear(),getInvalidName(),getCVV());
     }
 }

@@ -15,6 +15,7 @@ public class PurchasePage {
     private SelenideElement cvvField = $("input[placeholder='999']");
     private SelenideElement continueButton = $x("//*[text()='Продолжить']");
     private SelenideElement notification = $(".notification__content");
+    private SelenideElement notificationUnderLIne = $(".input__sub");
 
     public void sendForm(DataHelper.CardInfo info){
         cardNumberField.setValue(info.getCardNumber());
@@ -35,5 +36,23 @@ public class PurchasePage {
         notification
                 .shouldBe(Condition.visible)
                 .shouldHave(Condition.text("Ошибка! Банк отказал в проведении операции."));
+    }
+
+    public void getNotificationWrongValidityPeriod(){
+        notificationUnderLIne
+                .shouldBe(Condition.visible)
+                .shouldHave(Condition.text("Неверно указан срок действия карты"));
+    }
+
+    public void getNotificationWrongValidityPeriodInPast(){
+        notificationUnderLIne
+                .shouldBe(Condition.visible)
+                .shouldHave(Condition.text("Истёк срок действия карты"));
+    }
+
+    public void getNotificationWrongName(){
+        notificationUnderLIne
+                .shouldBe(Condition.visible)
+                .shouldHave(Condition.text("Неверный формат ввода. Укажите данные как на карте"));
     }
 }
