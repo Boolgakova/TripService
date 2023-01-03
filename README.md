@@ -6,7 +6,7 @@
 
 1. [Отчётные документы по итогам тестирования](https://github.com/Boolgakova/TripService/blob/master/Report.md)
 
-1. [Отчётные документы по итогам автоматизации]()
+1. [Отчётные документы по итогам автоматизации](https://github.com/Boolgakova/TripService/blob/master/Summary.md)
 
 ## Инструкция по запуску и сворачиванию приложения
 
