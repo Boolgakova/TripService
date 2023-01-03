@@ -14,7 +14,7 @@
 * Открыть проект в IntelliJ IDEA
 * Запустить Docker Desktop
 * Поднять необходимые контейнеры с помощью команды в терминале docker-compose up
-* Запустить приложение командой java -jar artifacts/aqa-shopjar
+* Запустить приложение командой java -jar artifacts/aqa-shop.jar
 
 ### Создание отчета
 * Создать отчеты и открыть их в браузере командой ./gradlew allureServe
